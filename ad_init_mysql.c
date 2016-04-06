@@ -2,6 +2,7 @@
 #include <linux/types.h>
 #include <sys/types.h>
 #include <stdint.h>
+#include <string.h>
 #include <mysql/mysql.h>
 #include "list.h"
 
