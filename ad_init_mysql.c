@@ -21,21 +21,24 @@ void print_inuse_ad()
 {
 	int i;
 	ad_list_node_t * pos = NULL, *next = NULL;
-	
+
 	for(i=0; i<MAX_PRIO; i++)
 	{
+		printf("================prio%d===============\n");
 		list_for_each_entry_safe(pos, next, &(ad_lists[i].head), node)
 		{
-			printf("-----------------------------------\n");
+
 			printf("ID:				%d\n", pos->ad->id);
 			printf("adtype:			%d\n", pos->ad->adtype);
 			printf("prio:			%d\n", pos->ad->prio);
 			printf("push_all_day:	%d\n", pos->ad->push_all_day);
 
+			printf("-----------------------------------\n");
 
-			printf("\n");
 								
 		}
+	
+					
 	}
 	
 }
