@@ -61,8 +61,6 @@ int main()
 	printf("mysql connect Failed\n");
 	return 0;
   } 
-
-
 	
   int index=0;
   ad_struct_t * struct_ptr = NULL;
@@ -102,7 +100,7 @@ int main()
 				continue;
 			}
 			lnode.ad = struct_ptr;
-			list_add_tail( &(lnode.node), &(ad_lists[i].head))
+			dlist_add_tail( &(lnode.node), &(ad_lists[i].head))
 			ad_lists[i].size ++;
     	}
 	}
