@@ -63,7 +63,7 @@ extern void __list_add(struct dlist_head *new,
  * Insert a new entry after the specified head.
  * This is good for implementing stacks.
  */
-static inline void list_add(struct dlist_head *new, struct dlist_head *head)
+static inline void dlist_add(struct dlist_head *new, struct dlist_head *head)
 {
     __list_add(new, head, head->next);
 }
@@ -77,7 +77,7 @@ static inline void list_add(struct dlist_head *new, struct dlist_head *head)
  * Insert a new entry before the specified head.
  * This is useful for implementing queues.
  */
-static inline void list_add_tail(struct dlist_head *new, struct dlist_head *head)
+static inline void dlist_add_tail(struct dlist_head *new, struct dlist_head *head)
 {
     __list_add(new, head->prev, head);
 }
