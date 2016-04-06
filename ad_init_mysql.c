@@ -3,7 +3,7 @@
 #include <sys/types.h>
 
 #include <mysql/mysql.h>
-#include "list.h"
+//#include "list.h"
 
 #include "ad.h"
 
