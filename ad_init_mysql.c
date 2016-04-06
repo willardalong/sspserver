@@ -24,7 +24,9 @@ void print_inuse_ad()
 
 	for(i=0; i<MAX_PRIO; i++)
 	{
-		printf("================prio%d===============\n");
+		if(ad_lists[i].size == 0)
+			continue;
+		printf("================prio%d===============\n", i);
 		list_for_each_entry_safe(pos, next, &(ad_lists[i].head), node)
 		{
 
