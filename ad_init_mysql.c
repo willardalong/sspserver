@@ -30,14 +30,17 @@ void print_inuse_ad()
 		list_for_each_entry_safe(pos, next, &(ad_lists[i].head), node)
 		{
 
-			printf("ID:				%d\n", pos->ad->id);
-			printf("adtype:			%d\n", pos->ad->adtype);
-			printf("prio:			%d\n", pos->ad->prio);
-			printf("push_all_day:	%d\n", pos->ad->push_all_day);
-
-			printf("-----------------------------------\n");
-
-								
+			printf("ID:					%d\n", pos->ad->id);
+			printf("adtype:				%d\n", pos->ad->adtype);
+			printf("prio:				%d\n", pos->ad->prio);
+			printf("push_all_day:		%d\n", pos->ad->push_all_day);
+			printf("push_one_day:		%d\n", pos->ad->push_one_day);
+			printf("push_per_user:		%d\n", pos->ad->push_per_user);
+			printf("push_user_interval:	%d\n", pos->ad->push_user_interval);
+			printf("push_status: 		%d\n", pos->ad->push_status);
+			printf("apply_status:		%d\n", pos->ad->apply_status);
+			printf("cpm_price: 			%d\n", pos->ad->cpm_price);
+			printf("-----------------------------------\n");							
 		}
 	
 					
@@ -96,7 +99,7 @@ int main()
 
 		ad_lists[i].prio = i;
     	while (row = mysql_fetch_row(result)) {
-			struct_ptr = &(ad_inuse[i][index]);
+			struct_ptr = &(ad_inuse[i][index++]);
 			struct_ptr->id = atoi(row[0]);  //id 
 			struct_ptr->adtype = atoi(row[1]); //adtype	
 			struct_ptr->prio =  i;
