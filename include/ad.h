@@ -40,7 +40,7 @@ typedef struct
 typedef struct
 {
 	ad_struct_t *ad;
-	struct list_head node;
+	struct dlist_head node;
 }ad_list_node_t;
 
 
@@ -49,7 +49,7 @@ typedef struct
 {
 	int prio;
 	int size;
-	struct list_head head;
+	struct dlist_head head;
 }ad_list_info_t;	
 
 #endif
