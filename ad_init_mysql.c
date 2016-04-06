@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <linux/types.h>
 #include <sys/types.h>
-
+#include <stdint.h>
 #include <mysql/mysql.h>
 //#include "list.h"
 

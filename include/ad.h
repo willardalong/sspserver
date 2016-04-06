@@ -8,6 +8,7 @@ typedef struct
 	int id;
 	int  adtype; //1:pc 2:mb	
 	int  prio;
+	
 	char name[256];
 	
 	uint64_t  push_all_day;
