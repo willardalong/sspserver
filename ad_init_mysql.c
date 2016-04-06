@@ -96,11 +96,13 @@ int main()
 			struct_ptr->apply_status  =  atoi(row[10]);
 			
 			ad_list_node_t * lnode = (ad_list_node_t *)malloc(sizeof(ad_list_node_t));
+			
 			if(lnode == NULL)
 			{
 				printf("Failed to malloc for lnode \n");
 				continue;
 			}
+			INIT_LIST_HEAD(&(lnode->node));
 			lnode->ad = struct_ptr;
 			dlist_add_tail( &(lnode->node), &(ad_lists[i].head));
 			ad_lists[i].size ++;
