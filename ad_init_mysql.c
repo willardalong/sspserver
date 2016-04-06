@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <linux/types.h>
 #include <mysql/mysql.h>
-#include "ad.h"
 #include "list.h"
+
+#include "ad.h"
+
 
 
 #define MAX_PRIO  10
