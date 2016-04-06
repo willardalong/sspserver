@@ -29,7 +29,7 @@ int main()
 
   for(i=0; i<g_max_prio; i++)
   {
-     snprintf(query, 1024, "select * from ad where prio=%d\n", i);	
+     snprintf(query, 1024, "select * from ad where prio=%d", i);	
      if(mysql_query(&mysql, query) == 0)
 	{
 		
@@ -41,7 +41,7 @@ int main()
 
 
     	while (row = mysql_fetch_row(result)) {
-      		printf("row name %s", row[0]);			
+      		printf("row name %s", row[1]);			
     	}
 	}
 	else
