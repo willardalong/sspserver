@@ -7,11 +7,13 @@ int g_max_prio= 10;
 
 int main()
 {
-   MYSQL  mysql;
+   MYSQL  mysql ,*sock;
    char query[1024];
    int i;
    int l = 0;
-   if(mysql_init(&mysql) == NULL)  
+   MYSQL_ROW row;
+   
+   if( (sock = mysql_init(&mysql)) == NULL)  
    {
 	printf("mysql init failed\n");
 	return 0;
@@ -31,19 +33,23 @@ int main()
      if(mysql_query(&mysql, query) == 0)
 	{
 		
-		MYSQL_RES *result = mysql_use_result(&mysql);
+		MYSQL_RES *result = mysql_store_result(&mysql);
 		if(result == NULL)
 		{
 			continue;
 		}
-		
+
+
+    	while (row = mysql_fetch_row(result)) {
+      		printf("row name %s", row[0]);			
+    	}
 	}
 	else
 	{
 		continue;
 	}
   }
-	
+  
 }
 
 
