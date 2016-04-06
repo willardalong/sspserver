@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <linux/types.h>
+#include <sys/types.h>
+
 #include <mysql/mysql.h>
 #include "list.h"
 
@@ -25,10 +27,10 @@ void print_inuse_ad()
 		list_for_each_entry_safe(pos, next, &(ad_lists[i].head), node)
 		{
 			printf("-----------------------------------\n");
-			printf("ID:				%d\n", pos->ad.id);
-			printf("adtype:			%d\n", pos->ad.adtype);
-			printf("prio:			%d\n", pos->ad.prio);
-			printf("push_all_day:	%d\n", pos->ad.push_all_day);
+			printf("ID:				%d\n", pos->ad->id);
+			printf("adtype:			%d\n", pos->ad->adtype);
+			printf("prio:			%d\n", pos->ad->prio);
+			printf("push_all_day:	%d\n", pos->ad->push_all_day);
 
 
 			printf("\n");
