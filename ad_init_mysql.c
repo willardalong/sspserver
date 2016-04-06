@@ -4,10 +4,36 @@
 #include "list.h"
 
 
-
+#define MAX_PRIO  10
 int g_max_prio= 10;
 
-ad_struct_t  ad_inuse[10][200];
+ad_struct_t  ad_inuse[MAX_PRIO][200];
+
+
+ad_list_info_t  ad_lists[MAX_PRIO];
+
+void print_inuse_ad()
+{
+	int i;
+	ad_list_node_t * pos = NULL, *next = NULL;
+	
+	for(i=0; i<MAX_PRIO; i++)
+	{
+		list_for_each_entry_safe(pos, next, &(ad_lists[i].head), node)
+		{
+			printf("-----------------------------------\n");
+			printf("ID:				%d\n", pos->ad.id);
+			printf("adtype:			%d\n", pos->ad.adtype);
+			printf("prio:			%d\n", pos->ad.prio);
+			printf("push_all_day:	%d\n", pos->ad.push_all_day);
+
+
+			printf("\n");
+								
+		}
+	}
+	
+}
 
 
 
@@ -51,13 +77,28 @@ int main()
 			continue;
 		}
 
-
+		ad_lists[i].prio = i;
     	while (row = mysql_fetch_row(result)) {
-			
 			struct_ptr = &(ad_inuse[i][index]);
-			struct_ptr->id = atoi(row[0]);
-						
-
+			struct_ptr->id = atoi(row[0]);  //id 
+			struct_ptr->adtype = atoi(row[1]); //adtype	
+			struct_ptr->prio =  i;
+			struct_ptr->push_all_day =  atoi(row[4]);
+			struct_ptr->push_one_day =  atoi(row[5]);
+			struct_ptr->push_per_user  = atoi(row[6]);
+			struct_ptr->push_user_interval = atoi(row[7]);			
+			struct_ptr->push_status  =  atoi(row[9]);
+			struct_ptr->apply_status  =  atoi(row[10]);
+			
+			ad_list_node_t * lnode = malloc(sizeof(ad_list_node_t));
+			if(lnode == NULL)
+			{
+				printf("Failed to malloc for lnode \n");
+				continue;
+			}
+			lnode.ad = struct_ptr;
+			list_add_tail( &(lnode.node), &(ad_lists[i].head))
+			ad_lists[i].size ++;
     	}
 	}
 	else
@@ -65,7 +106,14 @@ int main()
 		continue;
 	}
   }
-  
+
+
+
+  print_inuse_ad();
 }
+
+
+
+
 
 
