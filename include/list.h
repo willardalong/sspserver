@@ -153,7 +153,7 @@ static inline void list_del_init(struct dlist_head *entry)
 static inline void list_move(struct dlist_head *list, struct dlist_head *head)
 {
     __list_del(list->prev, list->next);
-    list_add(list, head);
+    dlist_add(list, head);
 }
 
 /**
@@ -165,7 +165,7 @@ static inline void list_move_tail(struct dlist_head *list,
                                   struct dlist_head *head)
 {
     __list_del(list->prev, list->next);
-    list_add_tail(list, head);
+    dlist_add_tail(list, head);
 }
 
 /**
