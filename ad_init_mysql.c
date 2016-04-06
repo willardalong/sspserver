@@ -37,9 +37,11 @@ int main()
   ad_struct_t * struct_ptr = NULL;
   for(i=0; i<g_max_prio; i++)
   {
+
   	 index = 0;
      snprintf(query, 1024, "select * from ad where prio=%d\n", i);
 	 
+
      if(mysql_query(&mysql, query) == 0)
 	{
 		
@@ -55,6 +57,7 @@ int main()
 			struct_ptr = &(ad_inuse[i][index]);
 			struct_ptr->id = atoi(row[0]);
 						
+
     	}
 	}
 	else
