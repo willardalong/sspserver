@@ -14,9 +14,7 @@
 #define MAX_PRIO  10
 int g_max_prio= 10;
 
-ad_struct_t  ad_inuse[MAX_PRIO][200];
-
-
+ad_struct_t     ad_inuse[MAX_PRIO][200];
 ad_list_info_t  ad_lists[MAX_PRIO];
 
 void print_inuse_ad()
@@ -42,7 +40,14 @@ void print_inuse_ad()
 	
 }
 
-
+void ad_list_init()
+{
+	int i;
+	for(i=0; i<MAX_PRIO; i++)
+	{
+			INIT_LIST_HEAD(&(ad_lists[i].head));	
+	}
+}
 
 int main()
 {
@@ -51,7 +56,9 @@ int main()
    int i;
    int l = 0;
    MYSQL_ROW row;
-   
+
+
+   ad_list_init();
    if( (sock = mysql_init(&mysql)) == NULL)  
    {
 	printf("mysql init failed\n");
