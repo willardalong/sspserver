@@ -2,6 +2,7 @@
 #include <linux/types.h>
 #include <sys/types.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 #include <mysql/mysql.h>
 #include "list.h"
@@ -101,7 +102,7 @@ int main()
 				continue;
 			}
 			lnode->ad = struct_ptr;
-			dlist_add_tail( &(lnode->node), &(ad_lists[i].head))
+			dlist_add_tail( &(lnode->node), &(ad_lists[i].head));
 			ad_lists[i].size ++;
     	}
 	}
