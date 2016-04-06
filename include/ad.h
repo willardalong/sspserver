@@ -27,8 +27,8 @@ typedef struct
 	char cnzz_code[1024]; //just for note;
 	char push_url[512]; //just for not	
 	
-	char domain_white_file[128];		
-	char domain_black_file[128];			
+	char *domain_white_file;		
+	char *domain_black_file;			
 
 	uint64_t starttime;
 	uint64_t endtime;
